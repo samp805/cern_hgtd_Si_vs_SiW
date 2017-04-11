@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+shopt -s expand_aliases
+
+# Job info
+echo "Running on $HOSTNAME: $0 $*"
+
+# setup
+echo "Running setup"
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+source ${{ATLAS_LOCAL_ROOT_BASE}}/user/atlasLocalSetup.sh
+localSetupROOT --skipConfirm
+
+echo "Testing ROOT"
+root -b -q
+
+echo "Now running..."
+
+cd {path}/../python
+
+pwd
+
+python TMVACalib.py {args} {inputfiles}
+

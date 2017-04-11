@@ -1,0 +1,5 @@
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniD3PD.v4crack.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540/user.blenzi.005369.egamma._00011.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniD3PD.v4crack.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540/user.blenzi.005369.egamma._00033.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniD3PD.v4crack.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540/user.blenzi.005369.egamma._00044.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniD3PD.v4crack.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540/user.blenzi.005369.egamma._00066.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniD3PD.v4crack.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540/user.blenzi.005369.egamma._00077.merge.root

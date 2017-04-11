@@ -1,0 +1,9 @@
+Executable= ../python/TMVACalib.py
+Universe = vanilla
+output = MVACalib_convertedSiSiPhoton_eta2.5-3.2_Eaccordion.out
+error = MVACalib_convertedSiSiPhoton_eta2.5-3.2_Eaccordion.error
+arguments = "--treename 'tree' --particleType '2' --variables 'pt,eta,fmod(phi*32/pi, 1)' --calibrationType '1' --etaRange '2.5,3.2' --outputDir './test' /home/sam/workspace/hgtd/rootfiles/withW.root"
+use_x509userproxy = TRUE
+getenv = TRUE
+Requirements = (OpSysMajorVer == 6)
+queue

@@ -1,0 +1,3 @@
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v4U.mc12_8TeV.ParticleGenerator_gamma_Et7to500plusLog.merge.AOD.s1479_s1470_r3586_r3549/user.blenzi.005196.egamma._00022.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v4U.mc12_8TeV.ParticleGenerator_gamma_Et7to500plusLog.merge.AOD.s1479_s1470_r3586_r3549/user.blenzi.005196.egamma._00057.merge.root
+root://eosatlas//eos/atlas/user/b/blenzi/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v4U.mc12_8TeV.ParticleGenerator_gamma_Et7to500plusLog.merge.AOD.s1479_s1470_r3586_r3549/user.blenzi.005196.egamma._00076.merge.root

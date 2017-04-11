@@ -1,0 +1,114 @@
+********************************************************************************
+ChangeLog for egammaMVACalibUtils
+********************************************************************************
+
+13/11/2015 Ruggero Turra <ruggero.turra@cern.ch>
+  * tag version used for mc15 MVA calibration
+
+24/09/2015 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+  - RootTools: getHisto accepts multi-dim, RootHistoGetter uses C++ filler
+  - performanceTools: Fix getFcnName for np.vectorize
+  - Fix unitestPerformance.py
+
+********************************************************************************
+11/09/2015 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+  - RootTools: adding fill function using test/filler.C, used in Root2DHistoGetter
+
+********************************************************************************
+10/09/2015 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+  - Estimators: adding quantile fcn (used in interquartile) and caller class.
+    Can be used as errorize(caller(quantile, prob=[0.9], __name__='eff90'))
+  - performance: adding command and config to parser. Saving pickle file with commands.
+    Using new binData fcn for 1D. Option to hide legend
+  
+
+********************************************************************************
+03/09/2015 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+  - Fix interquartile error scaling
+  - Support for more than 4 branches in GetValuesFromTree
+
+********************************************************************************
+12/09/2013 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+Tag: egammaMVACalibUtils-00-02-02
+
+  - Tag for v10 weights with new shower depth (egammaMVACalib-00-00-18)
+
+********************************************************************************
+27/08/2013 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+Tag: egammaMVACalibUtils-00-02-01
+
+  - Tag for v10 weights for electrons (egammaMVACalib-00-00-17)
+
+********************************************************************************
+27/11/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+Tag: egammaMVACalibUtils-00-02-00
+
+   - Used to get v7 weights (egammaMVACalib-00-00-10)
+
+********************************************************************************
+28/09/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+   - TMVACalib: small fixes (weights, ranges, material variable)
+     
+
+********************************************************************************
+28/09/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+Tag: egammaMVACalibUtils-00-01-02
+
+   - Support for weights
+
+********************************************************************************
+28/09/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+Tag: egammaMVACalibUtils-00-01-01
+
+*** Copying changelog messages since last entry
+
+- Bruno: Fixes for RootCore? and unconv photons 
+- Ruggero: add comparison for 2d / fix graph2d ordering / 
+    logy, norm, better logging format / add friend tree in TMVA outputs with shifts /
+    conversion correction with friend 
+
+********************************************************************************
+10/09/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+- TMVACalib: defining ranges for shower shapes, truncating values if outside
+- performance: options histo-max-depth, values-max-depth, legend-position
+- superimposer: changing colors, legend_position as option, fixing histogram order
+- RootTools: Root2DHistoGetter not relying on Clone (could become TGraphErrors)
+- worker: implementing histo and values-max-depth
+
+********************************************************************************
+07/09/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+- TMVACalib: Fixing phiMod (pi/512 for barrel, pi/384 for endcap)
+  adding electronDeltaPhiFirstLast
+- performance: implementing --action, estimators like truncated_meanXX
+- superimposer: skipping plots of values and histograms if all None (--action)
+- worker: implementing action, skipping plots if requested. fixing (?) 2D graphs
+
+********************************************************************************
+30/08/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+- TMVACalib: Fixing phiMod (pi/512), adding cellIndexCalo, cut on electron author
+- performance: default value for quantity to avoid problems with canvas name
+  print available methods in case of errors
+- Updating README with v4 and v5
+
+********************************************************************************
+
+08/06/2012 Bruno Lenzi <Bruno.Lenzi@cern.ch>
+
+--> PerformanceWorker works
+
+- Estimators return nan instead of None
+- Adding performance_examples.txt (removing from performance.py)
+- PerformanceWorker: binning data inside, adding __call__ and run methods, 
+  fixing graph (removing under/overflows and swapping axes in 2D case), adding xerrors
+- performanceTools: fixing binData2 (others might be wrong...), 
+  adding sliceUnderOverflows, getFcnName, getMidPoint
+
+********************************************************************************

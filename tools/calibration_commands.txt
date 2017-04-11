@@ -1,0 +1,818 @@
+
+*** use egammaMVACalibUtils-00-01-00 from here until instructed otherwise  ***
+
+##################################
+# Photon simple v1
+##################################
+
+submit_TMVACalib.py --noSubmit -m BDT -n photon --etaRange "0, 0.65, 0.8, 1.0, 1.2, 1.37, 1.55, 1.74, 1.82, 2.0, 2.2, 2.47" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/photon_flatEt7to80_Ebinned20_simple.v1_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+##################################
+# Photon simpleNoCellIndex v1
+##################################
+
+submit_TMVACalib.py --noSubmit -m BDT -n photon --etaRange "0, 0.65, 0.8, 1.0, 1.2, 1.37, 1.55, 1.74, 1.82, 2.0, 2.2, 2.47" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0 -o ~/outputs/MVACalib/photon_flatEt7to80_Ebinned20_simpleNoCellIndex.v1_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+##################################
+# Photon with shapes v1
+##################################
+
+submit_TMVACalib.py -q 8nh -m BDT -n photon --etaRange "0, 0.65, 0.8, 1.0, 1.2, 1.37, 1.55, 1.74, 1.82, 2.0, 2.2, 2.47" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,stripShapes,middleShapes -o ~/outputs/MVACalib/photon_flatEt7to80_Ebinned20_allShapes.v1_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+submit_TMVACalib.py -q 8nh -m BDT -n photon --etaRange "0, 0.65, 0.8, 1.0, 1.2, 1.37, 1.55, 1.74, 1.82, 2.0, 2.2, 2.47" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,stripShapes -o ~/outputs/MVACalib/photon_flatEt7to80_Ebinned20_stripShapes.v1_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+submit_TMVACalib.py -q 8nh -m BDT -n photon --etaRange "0, 0.65, 0.8, 1.0, 1.2, 1.37, 1.55, 1.74, 1.82, 2.0, 2.2, 2.47" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,middleShapes -o ~/outputs/MVACalib/photon_flatEt7to80_Ebinned20_middleShapes.v1_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+
+
+*** use egammaMVACalibUtils-00-02-00 from here until instructed otherwise  ***
+
+##################################
+# Electron / photon simple v2
+# no cell index, 
+# Special bins: 0-0.05 and 1.52-1.55 with Et = 0, 50, 100, 200
+##################################
+
+# Normal bins: "0.05, 0.65, 0.8, 1.0, 1.2, 1.37" and "1.55, 1.74, 1.82, 2.0, 2.2, 2.47"
+# = range(1, 6) + range(7, 12)
+
+submit_TMVACalib.py -q 8nh -m BDTG -n photon --etaRange "range(1, 6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0 -o ~/outputs/MVACalib/photon_flatEt_simple.v2_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+# Special bins: 0 = (0, 0.05), 6 = (1.52, 1.55)
+# Et = (0, 50, 100, 200)
+
+submit_TMVACalib.py -q 8nh -m BDTG -n photon --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 0,1,2 -V clusterEta,showerDepth,accordionE,etaMod,f0 -o ~/outputs/MVACalib/photon_flatEt_simple.v2_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v1.mc12_8TeV*.txt
+
+
+# --- Electrons ----
+# Normal bins: "0.05, 0.65, 0.8, 1.0, 1.2, 1.37" and "1.55, 1.74, 1.82, 2.0, 2.2, 2.47"
+# = range(1, 6) + range(7, 12)
+
+submit_TMVACalib.py -q 8nh -m BDTG --etaRange "range(1, 6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 3 -V clusterEta,showerDepth,accordionE,etaMod,f0 -o ~/outputs/MVACalib/electron_flatEt_simple.v2_Eaccordion ~/outputs/mc12_8TeV.e_Et7to80.merge.NTUP_EGAMMA_p1005.root ~/outputs/mc12_8TeV.e_Et80to500.merge.NTUP_EGAMMA_p1005.root
+
+# Special bins: 0 = (0, 0.05), 6 = (1.52, 1.55)
+# Et = (0, 50, 100, 200)
+
+submit_TMVACalib.py -q 8nh -m BDTG --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 3 -V clusterEta,showerDepth,accordionE,etaMod,f0 -o ~/outputs/MVACalib/electron_flatEt_simple.v2_Eaccordion ~/outputs/mc12_8TeV.e_Et7to80.merge.NTUP_EGAMMA_p1005.root ~/outputs/mc12_8TeV.e_Et80to500.merge.NTUP_EGAMMA_p1005.root
+
+##################################
+# Electron simple v3
+# like v2 but with cell index
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/electron_flatEt_simple.v3c_Eaccordion ~/outputs/mc12_8TeV.e_Et7to80.merge.NTUP_EGAMMA_p1005.root ~/outputs/mc12_8TeV.e_Et80to500.merge.NTUP_EGAMMA_p1005.root
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/electron_flatEt_simple.v3_Eaccordion ~/outputs/mc12_8TeV.e_Et7to80.merge.NTUP_EGAMMA_p1005.root ~/outputs/mc12_8TeV.e_Et80to500.merge.NTUP_EGAMMA_p1005.root
+
+##################################
+# Electron simple v3b (ran from v3muB)
+# like v2 but with cell index
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/electron_flatEt_simple.v3b_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/electron_flatEt_simple.v3b_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v3 + material traversed
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,material -o ~/outputs/MVACalib/electron_flatEt_simple.v3_material_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v2.mc12_8TeV.159010.ParticleGenerator_e_Et7to80.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v2.mc12_8TeV.159011.ParticleGenerator_e_Et80to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,material -o ~/outputs/MVACalib/electron_flatEt_simple.v3_material_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v2.mc12_8TeV.159010.ParticleGenerator_e_Et7to80.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v2.mc12_8TeV.159011.ParticleGenerator_e_Et80to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v3
+# like v2 but with cell index
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,100,200 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/photon_flatEt_simple.v3_Eaccordion ~/outputs/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v1*
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/photon_flatEt_simple.v3_Eaccordion ~/outputs/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v1*
+
+##################################
+# Electron simple v4
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + phiMod
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,phiMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple_phi.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,phiMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple_phi.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + etaModCalo
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaModCalo,f0,cellIndexCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaModCalo,f0,cellIndexCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + phiModCalo
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiModCalo -S phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_phiModCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiModCalo -S phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_phiModCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + brem
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,electronFBrem -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple_brem.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,electronFBrem -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple_brem.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + rphi + wstot + z0
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,electronZ0 -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_z0.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,electronZ0 -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_z0.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + rphi + wstot + z0 + brem
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,electronZ0,electronFBrem -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_z0_brem.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,electronZ0,electronFBrem -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_z0_brem.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + rphi + wstot + material + z0
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,material,electronZ0 -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_material_z0.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,phiMod,rphi,wstot,material,electronZ0 -o ~/outputs/MVACalib/electron_flatEt_simple_rphi_wstot_material_z0.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + eta/phiCalo
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + eta/phiCalo
+# new binning: 80,140,200,1e4
+# 70% stats
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --fTraining 0.7 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_70.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --fTraining 0.7 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_70.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4 + eta/phiCalo
+# new binning: 80,140,200,1e4
+# 90% stats
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --fTraining 0.9 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_90.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --fTraining 0.9 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_90.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4low + eta/phiCalo
+# new binning: 80,140,200,1e4
+# adding 4-7 GeV sample
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4low_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4low_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron simple v4low + eta/phiCalo
+# new binning: 80,140,200,1e4
+# adding 4-7 GeV sample
+# 95% of the stats
+##################################
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4low_95_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 --etaRange "0,6" --etRange 0,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4low_95_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4wlow + eta/phiCalo
+# new binning: 80,140,200,1e4
+# adding 4-7 GeV sample
+# weighted
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --weightFormula "el_truth_E/cosh(el_truth_eta) < 7e3 ? 3./100 : (el_truth_E/cosh(el_truth_eta) < 80e3 ? 73/5e3 : 420/5e3)" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4wlow_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --weightFormula "el_truth_E/cosh(el_truth_eta) < 7e3 ? 3./100 : (el_truth_E/cosh(el_truth_eta) < 80e3 ? 73/5e3 : 420/5e3)" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v4wlow_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + material
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaMod,cellIndex,material -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaMod,cellIndex,phiMod,material -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v4 + eta/phiCalo + material
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,material -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,material -S etaMod,phiMod -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon simple v4 (+ convR)
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/photon_flatEt_simple.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -o ~/outputs/MVACalib/photon_flatEt_simple.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+# +convR
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR -o ~/outputs/MVACalib/photon_flatEt_simple_convR.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR -o ~/outputs/MVACalib/photon_flatEt_simple_convR.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + convR + phiMod
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,phiMod,f0,cellIndex,convR -o ~/outputs/MVACalib/photon_flatEt_simple.v4_phi_convR_Eaccordion -S stripShapes,middleShapes,etaPointing,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta ~/outputs/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeV.*/*
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,phiMod,f0,cellIndex,convR -o ~/outputs/MVACalib/photon_flatEt_simple.v4_phi_convR_Eaccordion -S stripShapes,middleShapes,etaPointing,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta ~/outputs/egammaMVACalibD3PD/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeV.*/*
+
+
+##################################
+# Photon simple v4 + etaCalo (unconv)
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo -o ~/outputs/MVACalib/photon_flatEt_simple_etaCalo.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,phiModCalo,cellIndex -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo -o ~/outputs/MVACalib/photon_flatEt_simple_etaCalo.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,phiModCalo,cellIndex -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + phiModCalo (unconv)
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaMod,cellIndex,phiModCalo -o ~/outputs/MVACalib/photon_flatEt_simple_phiCalo.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,etaModCalo,phiMod,cellIndexCalo -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaMod,cellIndex,phiModCalo -o ~/outputs/MVACalib/photon_flatEt_simple_phiCalo.v4_Eaccordion -S stripShapes,middleShapes,etaPointing,etaModCalo,phiMod,cellIndexCalo -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + eta/phiCalo (unconv)
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + eta/phiCalo + 1 shower shape (unconv)
+# new binning: 80,140,200,1e4
+##################################
+
+for i in fside wstot ws3 weta2 rphi reta
+  do 
+  submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,ph_$i -S stripShapes,middleShapes,etaPointing -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_$i.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+  submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0 -m BDTG  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,ph_$i -S stripShapes,middleShapes,etaPointing -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_$i.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+  done
+
+##################################
+# Photon simple v4 + eta/phiCalo + fside + ws3
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,ph_fside,ph_ws3 -S stripShapes,middleShapes,etaPointing -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_fside_ws3.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+  submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0 -m BDTG  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,ph_fside,ph_ws3 -S stripShapes,middleShapes,etaPointing -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_fside_ws3.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v4 + convR + rphi + wstot
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR,rphi,wstot -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR,rphi,wstot -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v4 + convR + rphi + wstot
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR,rphi,wstot -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot_convPtRatios.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR,rphi,wstot -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot_convPtRatios.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v4 + convR + convPtRatios + rphi + wstot + material + etaCalo + phiCalo
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaModCalo,phiModCalo,f0,cellIndexCalo,convR,rphi,wstot,convPtRatios,material -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot_convPtRatios_material_etaCalo_phiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaModCalo,phiModCalo,f0,cellIndexCalo,convR,rphi,wstot,convPtRatios,material -o ~/outputs/MVACalib/photon_flatEt_simple_convR_rphi_wstot_convPtRatios_material_etaCalo_phiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+#-------------------------------------------------------------------------------------#
+
+##################################
+# Electron simple v5 (adding 4-7 GeV)
+# new binning: 0,10,20,...
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,10,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 5e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,20,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex  -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v5+convR (adding 4-7 GeV)
+# new binning: 0,5,10,20,...
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/photon_flatEt_simple_convR.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex,convR -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/photon_flatEt_simple_convR.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Electron test
+# same stats for low and high Et samples
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 60,80,140 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v5test_Eaccordion -f ~/Workarea/MVACalib/ElectronD3PD.test
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 50,100,200 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,etaMod,f0,cellIndex  -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,etaModCalo,phiModCalo,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,electronFBrem,electronDeltaPhi -o ~/outputs/MVACalib/electron_flatEt_simple.v5test_Eaccordion -f ~/Workarea/MVACalib/ElectronD3PD.test
+
+
+
+Photon:
+v4+R, v4+R+showerShapes, v4+R+showerShapes+ptconv, v4+R+showerShapes+ptconv+material+z0+phiCalo+etaCalo+cellIndexCalo
+
+
+##################################
+# Photon simple v4 (+ eta/phiCalo): conv and SiSi
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + R (+ eta/phiCalo): conv and SiSi
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR -S stripShapes,middleShapes,etaPointing,phiMod,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR -S stripShapes,middleShapes,etaPointing,phiMod,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + material (+ eta/phiCalo): conv and SiSi
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,material -S stripShapes,middleShapes,etaPointing,phiMod,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,material -S stripShapes,middleShapes,etaPointing,phiMod,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon simple v4 + R + material (+ eta/phiCalo): conv and SiSi
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR,material -S stripShapes,middleShapes,etaPointing,phiMod,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR,material -S stripShapes,middleShapes,etaPointing,phiMod,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_material.v4_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon simple v4tight + R + eta/phiCalo
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --cut "ph_tight" --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR -S stripShapes,middleShapes,etaPointing,phiMod,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v4tight_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --cut "ph_tight" --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR -S stripShapes,middleShapes,etaPointing,phiMod,material,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v4tight_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Electron simple v5 + etaPhiCalo (adding 4-7 GeV)
+# new binning: 0,10,20,...
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,10,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,cellIndexCalo,etaModCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,12,20,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,cellIndexCalo,etaModCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v5_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+
+##################################
+# Electron simple v5 weighted + etaPhiCalo (adding 4-7 GeV)
+# new binning: 0,10(12),20,...
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,10,20,40,60,80,140,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --weightFormula "el_truth_E/cosh(el_truth_eta) < 7e3 ? 3./100 : (el_truth_E/cosh(el_truth_eta) < 80e3 ? 73/5e3 : 420/5e3)" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,cellIndexCalo,etaModCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v5w_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,12,20,50,100,200,1e4 --cut "el_truth_E/cosh(el_truth_eta) > 4e3" --weightFormula "el_truth_E/cosh(el_truth_eta) < 7e3 ? 3./100 : (el_truth_E/cosh(el_truth_eta) < 80e3 ? 73/5e3 : 420/5e3)" --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionE,f0,cellIndexCalo,etaModCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v5w_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Electron simple v6 + etaPhiCalo (adding 4-7 GeV)
+# using accordionEt
+# new binning: 0,10(12),20,...
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" --etRange 0,10,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionEt,f0,cellIndexCalo,etaModCalo,phiModCalo -S accordionE,stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v6_Etaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" --etRange 0,12,20,50,100,200,1e4 --calibrationType 1 --particleType 3 -m BDTG -V clusterEta,showerDepth,accordionEt,f0,cellIndexCalo,etaModCalo,phiModCalo -S accordionE,stripShapes,middleShapes,etaPointing,etaMod,phiMod,material,electronFBrem,electronDeltaPhi,el_truth_eta,el_cl_phiCalo -o ~/outputs/MVACalib/electron_flatEt_simple_etaPhiCalo.v6_Etaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniElectronD3PD.v3muB.mc12_8TeV.ParticleGenerator_e_Et4to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Photon simple v4 from Hgg (+ eta/phiCalo)
+# new binning: 80,140,200,1e4
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_truth_Rconv -o ~/outputs/MVACalibH/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/Hgg_JHU_Spin_p1196.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1,2 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_truth_Rconv -o ~/outputs/MVACalibH/photon_flatEt_simple_etaPhiCalo.v4_Eaccordion -f ~/Workarea/MVACalib/Hgg_JHU_Spin_p1196.txt
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Photon v7 + eta/phiCalo + convR
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2 --particleTypeVar "ph_Rconv > 0 && ph_Rconv < 800" -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convZ
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convZ -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convZ.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convZ --particleTypeVar "ph_Rconv > 0 && ph_Rconv < 800" -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convZ.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v7 + eta/phiCalo + convR2 + convZ2
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799, Z = 2700
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convZ2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convZ2.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convZ2 --particleTypeVar "ph_Rconv > 0 && ph_Rconv < 800" -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convZ2.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v7 + eta/phiCalo + convR/Z2 
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799, Z = 2700
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convRorZ2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convRorZ2.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convRorZ2 --particleTypeVar "ph_Rconv > 0 && ph_Rconv < 800" -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convRorZ2.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v8 (conversions based on convR)
+# etaSign, etaModCalo, cellIndex but not etaCluster
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,etaSign,convR2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv,ph_cl_eta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v8_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 1 -m BDTG -V showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,etaSign,convR2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv,ph_cl_eta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo.v8_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v8+cluster (conversions based on convR)
+# etaSign, etaModCalo, cellIndex AND etaCluster
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,etaSign,absClusterEta,convR2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv,ph_cl_eta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_etaCluster.v8_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,etaSign,absClusterEta,convR2 -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv,ph_cl_eta -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_etaCluster.v8_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+#----------------------------------------------------------------------------------------
+# convPtRatios / convIsSiSi
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convPtRatios
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convIsSiSi
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convIsSiSi -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convIsSiSi.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convIsSiSi -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convIsSiSi.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convIsSiSi + convPtRatios
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convIsSiSi,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convIsSiSi_convPtRatios.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convIsSiSi,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convIsSiSi_convPtRatios.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+#-------------------------------------
+# Material
+
+##################################
+# Photon v7 + eta/phiCalo + convR + material
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,material -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_material.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,material --particleTypeVar "ph_Rconv > 0 && ph_Rconv < 800" -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convPtRatios,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_material.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convPtRatios + material
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+##################################
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,material -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_material.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,material -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_material.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convPtRatios + material
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+# 95% of the stats
+##################################
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,material -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_material_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,material -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_material_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convPtRatios
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+# 95% of the stats
+##################################
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Photon v7 + eta/phiCalo + convR + convPtRatios + phiModCell
+# Merge conversions, based on convR
+# convPt < 3 GeV goes to R = 799
+# 95% of the stats
+##################################
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "range(1,6) + range(7, 12)" --etRange 0,20,40,60,80,140,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,phiModCell -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_phiModCell_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --fTraining 0.95 -n photon --etaRange "0,6" --etRange 0,50,100,200,1e4 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  --calibrationType 1 --particleType 0,1 -m BDTG -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosA,phiModCell -S stripShapes,middleShapes,etaPointing,phiMod,material,convR,convPt,convDeltaPhiA,convDeltaPhiMaxA,ph_fside,ph_wstot,ph_ws3,ph_weta2,ph_rphi,ph_reta,ph_cl_phi,ph_cl_phiCalo,ph_truth_Rconv -o ~/outputs/MVACalib/photon_flatEt_simple_etaPhiCalo_convR_convPtRatios_phiModCell_95.v7_Eaccordion -f ~/Workarea/MVACalib/user.blenzi.MiniPhotonD3PD.v3muB.mc12_8TeVParticleGenerator_gamma_Et7to500.merge.AOD.e1173_s1479_s1470_r3586_r3549.txt
+
+#----------------------------------------------------------------------------------------
+
+##################################
+# Photon v9u + eta/phiCalo (fixed)
+# All photons treated as unconverted
+##################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" \
+  --etRange 0,20,40,60,80,140,200,1e4 \
+  --calibrationType 1 --particleType 0 -m BDTG \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/photon_simple_etaPhiCalo.v9u_Eaccordion \
+  -f ../inputs/user.blenzi.MiniPhotonD3PD.v4U.mc12_8TeV.ParticleGenerator_gamma_Et7to500plusLog.merge.AOD.s1479_s1470_r3586_r3549.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" \
+  --etRange 0,50,100,200,1e4 \
+  --calibrationType 1 --particleType 0 -m BDTG \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/photon_simple_etaPhiCalo.v9u_Eaccordion \
+  -f ../inputs/user.blenzi.MiniPhotonD3PD.v4U.mc12_8TeV.ParticleGenerator_gamma_Et7to500plusLog.merge.AOD.s1479_s1470_r3586_r3549.txt
+
+#----------------------------------------------------------------------------------------
+# egammaMVACalib-00-00-17 / egammaMVACalibUtils-00-02-01
+
+###################################
+## Electron v10 + eta/phiCalo
+## New samples with geometry GEO-21
+###################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" \
+  --etRange 0,10,20,40,60,80,120,500,1000,5e4 \
+  --calibrationType 1 --particleType 3 -m BDTG \
+  --fTraining 0.95 \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/electron_simple_etaPhiCalo_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" \
+  --etRange 0,25,50,100,500,1000,5e4 \
+  --calibrationType 1 --particleType 3 -m BDTG \
+  --fTraining 0.95 \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/electron_simple_etaPhiCalo_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/electron_simple_etaPhiCalo_95.v10_Eaccordion/ -c "(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 < 5,abs((el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 - 10) < 5,(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 > 15" --filter-files "*Et0-25*" 
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/electron_simple_etaPhiCalo_95.v10_Eaccordion/ -c "(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 < 3,abs((el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 - 5) < 2,(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 > 7" --filter-files "*Et0-10*" 
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/electron_simple_etaPhiCalo_95.v10_Eaccordion/ -c "(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 < 15,(el_rawcl_Es1 + el_rawcl_Es2 + el_rawcl_Es3)/cosh(el_cl_eta)/1e3 > 15" --filter-files "*Et10-20*" 
+
+###################################
+## Photon v10 
+## + eta/phiCalo + convR + convPtRatios
+## New samples with geometry GEO-21
+###################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" \
+  --etRange 0,10,20,40,60,80,120,500,1000,5e4 \
+  --calibrationType 1 --particleType 0,1 -m BDTG \
+  --fTraining 0.95 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatios \
+  -o ~/outputs/MVACalib/photon_simple_etaPhiCalo_convR_convPtRatios_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_gamma_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" \
+  --etRange 0,25,50,100,500,1000,5e4 \
+  --calibrationType 1 --particleType 0,1 -m BDTG \
+  --fTraining 0.95 \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatios \
+  -o ~/outputs/MVACalib/photon_simple_etaPhiCalo_convR_convPtRatios_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_gamma_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/photon_simple_etaPhiCalo_convR_convPtRatios_95.v10_Eaccordion/ -c "(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 < 5,abs((ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 - 10) < 5,(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 > 15" --filter-files "*Et0-25*" 
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/photon_simple_etaPhiCalo_convR_convPtRatios_95.v10_Eaccordion/ -c "(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 < 3,abs((ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 - 5) < 2,(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 > 7" --filter-files "*Et0-10*" 
+
+python TMVACalibPostProcessing.py --overwrite --doTrainTreeFriend -d ~/outputs/MVACalib/photon_simple_etaPhiCalo_convR_convPtRatios_95.v10_Eaccordion/ -c "(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 < 15,(ph_rawcl_Es1 + ph_rawcl_Es2 + ph_rawcl_Es3)/cosh(ph_cl_eta)/1e3 > 15" --filter-files "*Et10-20*" 
+
+
+#----------------------------------------------------------------------------------------
+# egammaMVACalib-00-00-18 / egammaMVACalibUtils-00-02-02
+
+###################################
+## Electron v10 new shower depth
+## + eta/phiCalo
+## shifts based on calibrated energy
+## and grouping multiple files
+## New samples with geometry GEO-21
+###################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" \
+  --etRange 0,10,20,40,60,80,120,500,1000,5e4 \
+  --calibrationType 1 --particleType 3 -m BDTG \
+  --fTraining 0.95 \
+  -V clusterEta,accordionE,showerDepth,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/electron_newShowerDepth_etaPhiCalo_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" \
+  --etRange 0,25,50,100,500,1000,5e4 \
+  --calibrationType 1 --particleType 3 -m BDTG \
+  --fTraining 0.95 \
+  -V clusterEta,accordionE,showerDepth,f0,etaModCalo,cellIndexCalo,phiModCalo \
+  -o ~/outputs/MVACalib/electron_newShowerDepth_etaPhiCalo_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_e_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+alias bsub_urgent="qsub -P P_atlas -l ct=03:00:00 -l vmem=3G,fsize=10G,sps=1 -o /sps/atlas/b/blenzi/job_outputs/ -j y"
+
+for eta in 0 0.05 0.65 0.8 1.0 1.2 1.52 1.55 1.74 1.82 2.0 2.2; 
+do bsub_urgent run_TMVACalibPostProcessing.sh --overwrite --doTrainTreeFriend --useCalibratedEt \
+  -d ~/outputs/MVACalib/electron_newShowerDepth_etaPhiCalo_95.v10_Eaccordion \
+  -c "0, 5, 7, 10, 15, 30, 50, 80" --doGlobal --method spline1 --filter-files "MVACalib_$phtype*-[1-8][05]_eta$eta*"
+done; done
+
+###################################
+## Photon v10 new shower depth
+## + eta/phiCalo + convR + convPtRatios
+## New samples with geometry GEO-21
+###################################
+
+submit_TMVACalib.py -q 8nh --etaRange "range(1,6) + range(7, 12)" \
+  --fTraining 0.95 \
+  --etRange 0,10,20,40,60,80,120,500,1000,5e4 \
+  --calibrationType 1 --particleType 0,1 -m BDTG \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosB \
+  -o ~/outputs/MVACalib/photon_newShowerDepth_etaPhiCalo_convR_convPtRatiosB_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_gamma_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+submit_TMVACalib.py -q 8nh --etaRange "0,6" \
+  --fTraining 0.95 \
+  --etRange 0,25,50,100,500,1000,5e4 \
+  --calibrationType 1 --particleType 0,1 -m BDTG \
+  --particleTypeVar "ph_Rconv > 0. && ph_Rconv < 800." \
+  -V clusterEta,showerDepth,accordionE,f0,etaModCalo,cellIndexCalo,phiModCalo,convR2,convPtRatiosB \
+  -o ~/outputs/MVACalib/photon_newShowerDepth_etaPhiCalo_convR_convPtRatiosB_95.v10_Eaccordion \
+  -f ../inputs/user.blenzi.MiniD3PD.v4tmp.mc12_8TeV.184000.ParticleGenerator_gamma_ETspectrumMVAcalib.e2173_s1748_s1741_r4807_r4540.txt
+
+alias bsub_urgent="qsub -P P_atlas -l ct=03:00:00 -l vmem=3G,fsize=10G,sps=1 -o /sps/atlas/b/blenzi/job_outputs/ -j y"
+
+for phtype in unconv conv; do
+for eta in 0 0.05 0.65 0.8 1.0 1.2 1.52 1.55 1.74 1.82 2.0 2.2; 
+do bsub_urgent run_TMVACalibPostProcessing.sh --overwrite --doTrainTreeFriend --useCalibratedEt \
+  -d ~/outputs/MVACalib/photon_newShowerDepth_etaPhiCalo_convR_convPtRatiosB_95.v10_Eaccordion \
+  -c "0, 5, 7, 10, 15, 30, 50, 80" --doGlobal --method spline1 --filter-files "MVACalib_$phtype*-[1-8][05]_eta$eta*"
+done; done
+
+
+
+
