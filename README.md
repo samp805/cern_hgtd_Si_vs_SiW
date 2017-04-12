@@ -7,7 +7,7 @@ gcc 5.4.0
 ROOT 6.04/16
 
 
-# BEFORE YOU EVEN INSTALL ANYTHING READ THIS{
+# BEFORE YOU EVEN INSTALL ANYTHING READ THIS
 I made a mistake coding locally then moving my work to lxplus. You should definitely work on lxplus for lots of reasons:
     1. Running MVA regression and other extremely CPU intensive programs will take a shorter amount of time & won't slowly destroy your computer
     2. It's easy to grab useful tools from others (like the egamma packages blenzi made that I use)
@@ -17,9 +17,9 @@ I made a mistake coding locally then moving my work to lxplus. You should defini
 The reason coding locally then switching to lxplus was such a pain was because I had the newest version of gcc, root, numpy, and mva on my computer, and lxplus uses old versions of all of those. So I had lots of compatibility issues, and I spent an inordinate amout of time debugging when I could've been progressing my work. Don't make the same mistake I did, develop on lxplus.
 
 Have Bruno send you his lxplus's .bashrc or something. Just ask him about it.
-}
 
-# Stuff that might be confusing{
+
+# Stuff that might be confusing
 You don't see these files in this repo because they're too large, but I refer to them in my code a lot
     - with(out)W.root --> original beam data with electron momentum 20 GeV
     - with(out)Wv2.root --> flat electron momentum ranging from 20 GeV to 100 GeV (you train on this one)
@@ -27,7 +27,7 @@ You don't see these files in this repo because they're too large, but I refer to
     - with(out)Wv4.root --> 45 GeV
     - withoutWv5.root --> 45 GeV with pileup deposited around the electron(s) in the event
 Sometimes I refer to the energies they correspond to as v2, v3, v4 but other times I use the actual energy itself (like in applied results below).
-}
+
 
 # Explanation of different energies (max_energy, combined2_energy, etc)
 {To reduce noise, we want to take the energy in the calorimeter to as small of area as possible. At the same time, we want the detection efficiency to be as close to unity as possible. I test a range of clusters: one tower (max energy), 2 adjacent towers (combined2_energy), 4 (2x2 square) adjacent towers (combined4_energy), and 9 (3x3 square) adjacent towers (combined9_towers). You'll find that combined9_towers often performs the best in detection efficiency, but keep in mind when you have pileup it'll also have the most noise.}
