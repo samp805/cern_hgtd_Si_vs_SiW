@@ -70,3 +70,5 @@ tools/
 xmls/
     - These are just the weights that get spit out from MVA training (from_lxplus/calib_runner.py)
     - You'll source from these in applying your regression to other samples. 
+
+If you have any questions, and I'm pretty sure you will because, I admit, this code is very disorganized and dependancy-ridden, email me at samp805@gmail.com
