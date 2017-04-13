@@ -64,7 +64,7 @@ To reduce noise, we want to take the energy in the calorimeter to as small of ar
 # tools/
     - tools/python contains the bulk of my code, but it's also surrounded Bruno's code.
     - generate_roots.py will make analysis trees. This is what you'll run, everything else is just a dependancy of this.
-    - If you want to peek at how I calculate the different energies, look at add_combined_*.py and add_max_energy.py
+    - If you want to peek at how I calculate the different energies, look at add_everything_at_once.py
     - Some of my code in here is useless, sorry about that.
 
 # xmls/
